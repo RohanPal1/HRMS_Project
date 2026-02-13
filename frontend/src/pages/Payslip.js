@@ -49,6 +49,21 @@ export default function Payslip() {
     if (isAdminOrHr) loadEmployees();
   }, [isAdminOrHr]);
 
+
+  // Separating Month and Year from schema stored data
+
+  const parseMonthYear = (monthYear) => {
+    if (!monthYear) return { month: "", year: "" };
+
+    const parts = monthYear.split(" ");
+    return {
+      month: parts[0],
+      year: Number(parts[1]),
+    };
+  };
+
+
+
   // ---------------------------
   // Load payslips
   // ---------------------------
@@ -212,20 +227,24 @@ export default function Payslip() {
   // Delete Payslip (Admin/HR)
   // ---------------------------
   const handleDeletePayslip = async (slip) => {
-    setErr("");
-    setMsg("");
-
-    const ok = window.confirm(
-      `Delete payslip for ${slip.employeeId} (${formatMonthYear(slip)})?`
-    );
-    if (!ok) return;
-
     try {
       setLoading(true);
+      setErr("");
+      setMsg("");
+
+      const monthYear = slip.monthYear || `${slip.month} ${slip.year}`;
+      const { month, year } = parseMonthYear(monthYear);
+
+      if (!month || !year) {
+        setErr("Invalid payslip month/year");
+        return;
+      }
 
       await authFetch(
-        `http://localhost:8000/api/payslips/${slip.employeeId}/${slip.month}/${slip.year}`,
-        { method: "DELETE" }
+        `http://localhost:8000/api/payslips/${slip.employeeId}/${month}/${year}`,
+        {
+          method: "DELETE",
+        }
       );
 
       setMsg("Payslip deleted successfully ✅");
@@ -240,43 +259,36 @@ export default function Payslip() {
   // ---------------------------
   // Regenerate Payslip (Admin/HR)
   // ---------------------------
-  const handleRegeneratePayslip = async (slip) => {
-    setErr("");
-    setMsg("");
+  // const handleRegeneratePayslip = async (slip) => {
+  //   try {
+  //     setLoading(true);
+  //     setErr("");
+  //     setMsg("");
 
-    // Use current form values if present, else use old slip values
-    const payload = {
-      employeeId: slip.employeeId,
-      month: slip.month,
-      year: Number(slip.year),
+  //     const monthYear = slip.monthYear || `${slip.month} ${slip.year}`;
+  //     const { month, year } = parseMonthYear(monthYear);
 
-      basicSalary: Number(basicSalary !== "" ? basicSalary : slip.basicSalary || 0),
-      hra: Number(hra !== "" ? hra : slip.hra || 0),
-      allowance: Number(allowance !== "" ? allowance : slip.allowance || 0),
-      deduction: Number(deduction !== "" ? deduction : slip.deduction || 0),
-    };
+  //     await authFetch("http://localhost:8000/api/payslips/regenerate", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         employeeId: slip.employeeId,
+  //         month,
+  //         year,
+  //         basicSalary: slip.basicSalary,
+  //         hra: slip.hra,
+  //         allowance: slip.allowance,
+  //         deduction: slip.deduction,
+  //       }),
+  //     });
 
-    const ok = window.confirm(
-      `Regenerate payslip for ${slip.employeeId} (${formatMonthYear(slip)})?`
-    );
-    if (!ok) return;
-
-    try {
-      setLoading(true);
-
-      const res = await authFetch("http://localhost:8000/api/payslips/regenerate", {
-        method: "POST",
-        body: JSON.stringify(payload),
-      });
-
-      setMsg(res?.message || "Payslip regenerated successfully ✅");
-      await fetchPayslips();
-    } catch (e) {
-      setErr(e.message || "Failed to regenerate payslip");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setMsg("Payslip regenerated successfully ✅");
+  //     await fetchPayslips();
+  //   } catch (e) {
+  //     setErr(e.message || "Failed to regenerate payslip");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   // ===========================
   // UI
@@ -428,18 +440,16 @@ export default function Payslip() {
                   {/* ADMIN/HR actions */}
                   {isAdminOrHr && (
                     <>
-                      <button
-                        className="ps-btn small secondary"
+                      {/* <button
+                        className="ps-btn small"
                         onClick={() => handleRegeneratePayslip(slip)}
-                        disabled={loading}
                       >
                         Regenerate
-                      </button>
+                      </button> */}
 
                       <button
                         className="ps-btn small danger"
                         onClick={() => handleDeletePayslip(slip)}
-                        disabled={loading}
                       >
                         Delete
                       </button>

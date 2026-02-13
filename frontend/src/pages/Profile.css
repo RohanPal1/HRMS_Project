@@ -35,10 +35,24 @@
 
 .profileRow {
     display: flex;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 10px;
     padding: 12px 0;
     border-bottom: 1px solid #f2f2f2;
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .profileRow {
+        gap: 24px;
+    }
+}
+
+/* Laptops & Desktops */
+@media (min-width: 1024px) {
+    .profileRow {
+        gap: 92px;
+
+    }
 }
 
 .profileRow:last-child {
@@ -59,7 +73,7 @@
 
 .profileInput {
     flex: 1;
-    padding: 10px 12px;
+    /* padding: 10px 12px; */
     border-radius: 10px;
     border: 1px solid #d9d9d9;
     outline: none;

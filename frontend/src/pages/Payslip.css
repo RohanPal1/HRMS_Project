@@ -188,3 +188,11 @@
     width: 100%;
   }
 }
+
+.ps-btn.danger {
+  background: #dc2626;
+}
+
+.ps-btn.danger:hover {
+  opacity: 0.9;
+}

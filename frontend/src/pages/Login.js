@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("admin@hrms.com");
@@ -45,30 +46,42 @@ export default function Login() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "auto", padding: 20 }}>
-      <h2>Login</h2>
+    <div className="login-page">
+      <div className="login-card">
+        <h2 className="login-title">Login</h2>
 
-      <input
-        type="email"
-        value={email}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        style={{ width: "100%", marginBottom: 10 }}
-      />
+        <input
+          type="email"
+          value={email}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          className="login-input"
+        />
 
-      <input
-        type="password"
-        value={password}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ width: "100%", marginBottom: 10 }}
-      />
+        <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-input"
+        />
 
-      <button onClick={handleLogin} style={{ width: "100%" }}>
-        Login
-      </button>
+        <button onClick={handleLogin} className="login-btn">
+          Login
+        </button>
 
-      <p>{message}</p>
+        {message && (
+          <div
+            className={`login-message ${message.toLowerCase().includes("error") ||
+                message.toLowerCase().includes("failed")
+                ? "login-error"
+                : "login-success"
+              }`}
+          >
+            {message}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

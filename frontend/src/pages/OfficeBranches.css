@@ -1,4 +1,4 @@
-.ob-page {
+/* .ob-page {
   padding: 20px;
 }
 
@@ -100,4 +100,172 @@
 .ob-note {
   margin-top: 10px;
   color: #555;
+} */
+
+
+
+/* Page */
+.ob-page {
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .ob-page {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ob-page {
+    padding: 32px;
+  }
+}
+
+/* Title */
+.ob-title {
+  margin-bottom: 16px;
+}
+
+/* Card */
+.ob-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 768px) {
+  .ob-card {
+    padding: 20px;
+  }
+}
+
+/* Card Title */
+.ob-card-title {
+  margin-bottom: 14px;
+}
+
+/* ========================= */
+/* Responsive Grid Fix */
+/* ========================= */
+
+.ob-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  /* Mobile: 1 column */
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 640px) {
+  .ob-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+  .ob-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Inputs */
+.ob-input {
+  width: 100%;
+  /* prevents overflow */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 0;
+  /* important for grid overflow fix */
+  box-sizing: border-box;
+}
+
+/* Spacer */
+.ob-spacer {
+  height: 12px;
+}
+
+/* Actions */
+.ob-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.ob-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ob-btn-dark {
+  background: #111827;
+  color: white;
+}
+
+.ob-btn-gray {
+  background: #e5e7eb;
+}
+
+.ob-btn-red,
+.ob-btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.ob-btn-mini {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+/* ========================= */
+/* Responsive Table */
+/* ========================= */
+
+.ob-table-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ob-table-wrap {
+  overflow-x: auto;
+}
+
+.ob-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  /* prevents squashing */
+}
+
+.ob-table th,
+.ob-table td {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ob-empty {
+  text-align: center;
+  padding: 18px;
+}
+
+.ob-note {
+  margin-top: 10px;
+  color: #555;
+}
+
+.ob-table-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }

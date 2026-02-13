@@ -323,6 +323,8 @@ def get_my_profile(current_user=Depends(get_current_user)):
     emp = employee_collection.find_one({"email": email}, {"_id": 0, "password": 0})
     if not emp:
         raise HTTPException(status_code=404, detail="Employee not found")
+
+    emp["role"] = "EMPLOYEE"
     return emp
 
 @app.put("/api/profile/me")
@@ -1152,7 +1154,7 @@ def create_office(
 
 @app.get("/api/offices")
 def get_offices(user=Depends(require_roles(["ADMIN", "HR", "EMPLOYEE"]))):
-    offices = list(office_collection.find({"isActive": True}, {"_id": 0}))
+    offices = list(office_collection.find({}, {"_id": 0}))
     return offices
 
 @app.patch("/api/settings/attendance-geo-fencing")
@@ -1329,10 +1331,11 @@ def delete_payslip(
     year: int,
     admin=Depends(require_roles(["ADMIN", "HR"]))
 ):
+    monthYear = f"{month} {year}"
+
     result = payslips_collection.delete_one({
         "employeeId": employeeId,
-        "month": month,
-        "year": year
+        "monthYear": monthYear
     })
 
     if result.deleted_count == 0:
@@ -1340,56 +1343,58 @@ def delete_payslip(
 
     return {"message": "Payslip deleted successfully"}
 
-# Re generate payslip 
+# # Re generate payslip 
 
-@app.post("/api/payslips/regenerate")
-def regenerate_payslip(
-    payload: PayslipGeneratePayload,
-    admin=Depends(require_roles(["ADMIN", "HR"]))
-):
-    # Validate employee exists
-    emp = employee_collection.find_one({"employeeId": payload.employeeId}, {"_id": 0, "password": 0})
-    if not emp:
-        raise HTTPException(status_code=404, detail="Employee not found")
+# @app.post("/api/payslips/regenerate")
+# def regenerate_payslip(
+#     payload: PayslipGeneratePayload,
+#     admin=Depends(require_roles(["ADMIN", "HR"]))
+# ):
+#     emp = employee_collection.find_one(
+#         {"employeeId": payload.employeeId},
+#         {"_id": 0, "password": 0}
+#     )
+#     if not emp:
+#         raise HTTPException(status_code=404, detail="Employee not found")
 
-    # Delete existing (if any)
-    payslips_collection.delete_one({
-        "employeeId": payload.employeeId,
-        "month": payload.month,
-        "year": payload.year
-    })
+#     monthYear = f"{payload.month} {payload.year}"
 
-    totalEarnings = payload.basicSalary + payload.hra + payload.allowance
-    netSalary = totalEarnings - payload.deduction
+#     # delete old slip if exists
+#     payslips_collection.delete_one({
+#         "employeeId": payload.employeeId,
+#         "monthYear": monthYear
+#     })
 
-    doc = {
-        "employeeId": payload.employeeId,
-        "employeeName": emp.get("fullName", ""),
-        "email": emp.get("email", ""),
-        "department": emp.get("department", ""),
-        "designation": emp.get("designation", ""),
+#     totalEarnings = float(payload.basicSalary) + float(payload.hra) + float(payload.allowance)
+#     netSalary = totalEarnings - float(payload.deduction)
+#     if netSalary < 0:
+#         netSalary = 0
 
-        "month": payload.month,
-        "year": payload.year,
+#     payslipId = f"PS-{payload.year}-{payload.month[:3].upper()}-{payload.employeeId}"
 
-        "basicSalary": payload.basicSalary,
-        "hra": payload.hra,
-        "allowance": payload.allowance,
-        "deduction": payload.deduction,
+#     doc = {
+#         "payslipId": payslipId,
+#         "employeeId": payload.employeeId,
+#         "fullName": emp.get("fullName", ""),
+#         "email": emp.get("email", ""),
+#         "monthYear": monthYear,
 
-        "totalEarnings": totalEarnings,
-        "netSalary": netSalary,
+#         "basicSalary": float(payload.basicSalary),
+#         "hra": float(payload.hra),
+#         "allowance": float(payload.allowance),
+#         "deduction": float(payload.deduction),
 
-        "generatedBy": admin.get("email"),
-        "generatedRole": admin.get("role"),
-    }
+#         "totalEarnings": float(totalEarnings),
+#         "netSalary": float(netSalary),
 
-    result = payslips_collection.insert_one(doc)
+#         "generatedBy": admin["email"],
+#         "generatedAt": datetime.utcnow().isoformat()
+#     }
 
-    return {
-        "message": "Payslip regenerated successfully",
-        "payslipId": str(result.inserted_id)
-    }
+#     result = payslips_collection.insert_one(doc)
+#     doc["_id"] = str(result.inserted_id)
+
+#     return {"message": "Payslip regenerated successfully", "payslip": doc}
 
 
 

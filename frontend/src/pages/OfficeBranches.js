@@ -283,21 +283,25 @@ export default function OfficeBranches() {
                                         <td>{o.lat}</td>
                                         <td>{o.lng}</td>
                                         <td>{o.radiusMeters}m</td>
-                                        <td>{o.isActive ? "Active" : "Inactive"}</td>
+                                        <td style={{ color: o.isActive ? "green" : "red" }}>
+                                            {o.isActive ? "Active" : "Inactive"}
+                                        </td>
                                         <td>
-                                            <button
-                                                className="ob-btn ob-btn-mini"
-                                                onClick={() => handleEdit(o)}
-                                            >
-                                                Edit
-                                            </button>
+                                            <div className="ob-table-actions">
+                                                <button
+                                                    className="ob-btn ob-btn-mini"
+                                                    onClick={() => handleEdit(o)}
+                                                >
+                                                    Edit
+                                                </button>
 
-                                            <button
-                                                className="ob-btn ob-btn-mini ob-btn-danger"
-                                                onClick={() => handleDelete(o.officeId)}
-                                            >
-                                                Delete
-                                            </button>
+                                                <button
+                                                    className="ob-btn ob-btn-mini ob-btn-danger"
+                                                    onClick={() => handleDelete(o.officeId)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))

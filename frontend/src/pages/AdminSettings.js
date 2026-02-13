@@ -3,7 +3,7 @@ import axios from "axios";
 import "./AdminSettings.css";
 
 
-const API = REACT_APP_API_BASE_URL || "http://localhost:8000";
+const API = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export default function AdminSettings() {
     const token = localStorage.getItem("token");
