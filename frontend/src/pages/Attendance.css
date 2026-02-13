@@ -1,0 +1,289 @@
+/* =========================
+   Attendance Page Layout
+   ========================= */
+
+.att-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.att-title {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+/* =========================
+   Cards
+   ========================= */
+
+.att-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.att-card-title {
+  font-size: 16px;
+  font-weight: 900;
+  margin: 0 0 12px;
+}
+
+/* =========================
+   Employee Info
+   ========================= */
+
+.att-emp-info {
+  font-size: 14px;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+/* =========================
+   Grid Helpers
+   ========================= */
+
+.att-grid {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+}
+
+.att-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.att-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.att-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.att-spacer {
+  height: 12px;
+}
+
+/* =========================
+   Inputs
+   ========================= */
+
+.att-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.att-input:focus {
+  border-color: #2563eb;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+.att-btn {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 14px;
+  transition: 0.15s ease;
+}
+
+.att-btn:hover {
+  opacity: 0.92;
+}
+
+.att-btn-dark {
+  background: #111827;
+  color: white;
+}
+
+.att-btn-blue {
+  background: #2563eb;
+  color: white;
+}
+
+.att-btn-navy {
+  background: #0f172a;
+  color: white;
+}
+
+.att-btn-green {
+  background: #16a34a;
+  color: white;
+}
+
+.att-btn-red {
+  background: #dc2626;
+  color: white;
+}
+
+/* Small refresh button */
+.att-btn-mini {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+/* =========================
+   Notes + Help
+   ========================= */
+
+.att-note {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+.att-help {
+  margin: 10px 0 0;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+/* =========================
+   Table
+   ========================= */
+
+.att-table-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.att-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.att-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* important */
+}
+
+.att-table th,
+.att-table td {
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+}
+
+.att-table th {
+  background: #f9fafb;
+  font-weight: 900;
+}
+
+.att-table-empty {
+  text-align: center;
+  padding: 18px;
+  opacity: 0.75;
+}
+
+.att-footer {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+/* =========================
+   Status Badges
+   ========================= */
+
+.att-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  display: inline-block;
+}
+
+.att-present {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.att-absent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.att-half-day {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.att-leave {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* =========================
+   Responsive Fixes
+   ========================= */
+
+@media (max-width: 900px) {
+  .att-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .att-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .att-table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 600px) {
+  .att-title {
+    font-size: 20px;
+  }
+
+  .att-card {
+    padding: 12px;
+  }
+
+  .att-grid-2,
+  .att-grid-3,
+  .att-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .att-table {
+    min-width: 720px;
+  }
+
+  .att-table-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+}
+
+.ps-page {
+  width: 100%;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.ps-card {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.ps-title {
+  margin: 0 0 14px 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.ps-subtitle {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.ps-note {
+  margin: 0;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.ps-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.ps-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ps-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.ps-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  outline: none;
+  font-size: 14px;
+  background: white;
+}
+
+.ps-input:focus {
+  border-color: #2563eb;
+}
+
+.ps-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 16px 0;
+}
+
+/* Main button */
+.ps-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #111827;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ps-btn:hover {
+  opacity: 0.92;
+}
+
+/* Success / Error */
+.ps-error {
+  margin: 10px 0 0 0;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.ps-success {
+  margin: 10px 0 0 0;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Payslip list */
+.ps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.ps-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.ps-item-title {
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.ps-item-sub {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Actions container */
+.ps-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Small buttons */
+.ps-btn.small {
+  width: auto;
+  margin-top: 0;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+/* Secondary */
+.ps-btn.secondary {
+  background: #2563eb;
+}
+
+/* Danger */
+.ps-btn.danger {
+  background: #dc2626;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ps-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .ps-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .ps-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .ps-title {
+    font-size: 18px;
+  }
+
+  .ps-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ps-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .ps-btn.small {
+    width: 100%;
+  }
+}

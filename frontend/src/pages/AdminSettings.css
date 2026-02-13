@@ -1,0 +1,96 @@
+.as-page {
+  padding: 20px;
+}
+
+.as-title {
+  margin-bottom: 14px;
+}
+
+.as-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.as-card-title {
+  margin-bottom: 12px;
+}
+
+.as-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.as-sub {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+.as-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.as-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.as-btn-dark {
+  background: #111827;
+  color: white;
+}
+
+/* Switch */
+.as-switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.as-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.as-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ddd;
+  transition: 0.2s;
+  border-radius: 30px;
+}
+
+.as-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.as-switch input:checked + .as-slider {
+  background-color: #22c55e;
+}
+
+.as-switch input:checked + .as-slider:before {
+  transform: translateX(24px);
+}

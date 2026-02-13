@@ -1,0 +1,226 @@
+.usersPage {
+    padding: 20px;
+}
+
+/* Header */
+.usersHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.usersTitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.usersCounts {
+    display: flex;
+    gap: 14px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* Alerts */
+.usersMsg {
+    margin-top: 10px;
+    color: green;
+    font-weight: 600;
+}
+
+.usersErr {
+    margin-top: 10px;
+    color: red;
+    font-weight: 600;
+}
+
+/* Controls */
+.usersControls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.usersSearch {
+    min-width: 260px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.usersSelect {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+/* Table */
+.tableWrap {
+    margin-top: 14px;
+    overflow-x: auto;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.usersTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.usersTable th,
+.usersTable td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.usersTable th {
+    background: #fafafa;
+    font-weight: 700;
+}
+
+.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Buttons */
+.rowBtns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.primaryBtn {
+    background: black;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.secondaryBtn {
+    background: #eee;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.secondaryBtn:disabled,
+.primaryBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.danger {
+    background: #ffe1e1;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+/* Pagination */
+.paginationRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.pageInfo {
+    font-size: 14px;
+}
+
+/* Role badges */
+.roleBadge {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    display: inline-block;
+}
+
+.role-admin {
+    background: #ffe5c4;
+}
+
+.role-hr {
+    background: #d9f3ff;
+}
+
+.role-employee {
+    background: #e6ffe7;
+}
+
+/* Modal (Edit Password Popup) */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 9999;
+}
+
+.modalBox {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modalTitle {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.modalSub {
+    margin-top: 6px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.modalInput {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.showPassRow {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.modalBtns {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}

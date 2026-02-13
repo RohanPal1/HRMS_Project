@@ -1,0 +1,143 @@
+.dash-wrap {
+  padding: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dash-title {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.dash-card {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dash-muted {
+  opacity: 0.7;
+  margin: 0;
+}
+
+.dash-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dash-statCard {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  flex: 1;
+  min-width: 230px;
+}
+
+.dash-statLabel {
+  font-weight: 800;
+  opacity: 0.75;
+}
+
+.dash-statNumber {
+  font-size: 30px;
+  font-weight: 950;
+  margin-top: 10px;
+}
+
+.dash-sectionTitle {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.dash-chartsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.dash-chartBox {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-chartInner {
+  flex: 1;
+  min-height: 0;
+}
+
+.dash-monthlyCard {
+  margin-top: 16px;
+}
+
+.dash-monthlyChart {
+  height: 360px;
+  margin-top: 10px;
+}
+
+.dash-welcome {
+  font-size: 18px;
+  font-weight: 950;
+}
+
+.dash-subText {
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .dash-chartsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-chartBox {
+    height: 320px;
+  }
+
+  .dash-monthlyChart {
+    height: 320px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .dash-wrap {
+    padding: 14px;
+  }
+
+  .dash-title {
+    font-size: 20px;
+  }
+
+  .dash-statCard {
+    min-width: 100%;
+  }
+
+  .dash-statNumber {
+    font-size: 26px;
+  }
+
+  .dash-chartBox {
+    padding: 14px;
+    border-radius: 16px;
+    height: 300px;
+  }
+
+  .dash-monthlyChart {
+    height: 280px;
+  }
+}

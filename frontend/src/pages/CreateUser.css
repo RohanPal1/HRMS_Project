@@ -1,0 +1,99 @@
+.cu-container {
+    width: 100%;
+    max-width: 520px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cu-title {
+    margin: 0 0 14px 0;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.cu-form {
+    display: grid;
+    gap: 12px;
+}
+
+.cu-input,
+.cu-select {
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid #dcdcdc;
+    outline: none;
+    font-size: 14px;
+    background: white;
+}
+
+.cu-input:focus,
+.cu-select:focus {
+    border-color: #2563eb;
+}
+
+.cu-btn {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: none;
+    background: #111827;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cu-btn:hover {
+    opacity: 0.92;
+}
+
+.cu-msg {
+    color: #16a34a;
+    font-weight: 700;
+    margin: 0;
+}
+
+.cu-err {
+    color: #dc2626;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+    .cu-container {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .cu-title {
+        font-size: 18px;
+    }
+}
+
+
+.cu-pass-wrap {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.cu-pass-input {
+    flex: 1;
+}
+
+.cu-pass-toggle {
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cu-pass-toggle:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

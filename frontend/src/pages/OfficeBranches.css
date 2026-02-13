@@ -1,0 +1,103 @@
+.ob-page {
+  padding: 20px;
+}
+
+.ob-title {
+  margin-bottom: 14px;
+}
+
+.ob-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.ob-card-title {
+  margin-bottom: 12px;
+}
+
+.ob-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.ob-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.ob-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.ob-spacer {
+  height: 12px;
+}
+
+.ob-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ob-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.ob-btn-dark {
+  background: #111827;
+  color: white;
+}
+
+.ob-btn-gray {
+  background: #e5e7eb;
+}
+
+.ob-btn-red,
+.ob-btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.ob-btn-mini {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.ob-table-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ob-table-wrap {
+  overflow-x: auto;
+}
+
+.ob-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ob-table th,
+.ob-table td {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+
+.ob-empty {
+  text-align: center;
+  padding: 16px;
+}
+
+.ob-note {
+  margin-top: 10px;
+  color: #555;
+}
