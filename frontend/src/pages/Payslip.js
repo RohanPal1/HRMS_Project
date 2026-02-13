@@ -4,6 +4,11 @@ import autoTable from "jspdf-autotable";
 import api, { authFetch } from "../api";
 import "./Payslip.css";
 
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
+
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December",
@@ -39,7 +44,7 @@ export default function Payslip() {
   useEffect(() => {
     const loadEmployees = async () => {
       try {
-        const res = await api.get("/api/employees");
+        const res = await api.get(`${API_BASE_URL}/api/employees`);
         setEmployees(res.data || []);
       } catch (e) {
         console.log(e);
@@ -75,14 +80,14 @@ export default function Payslip() {
     try {
       // EMPLOYEE -> /me
       if (isEmployee) {
-        const data = await authFetch("/api/payslips/me");
+        const data = await authFetch(`${API_BASE_URL}/api/payslips/me`);
         setPayslips(data || []);
       }
 
       // ADMIN/HR -> if selected employee
       if (isAdminOrHr && selectedEmployee) {
         const data = await authFetch(
-          `/api/payslips/${selectedEmployee}`
+          `${API_BASE_URL}/api/payslips/${selectedEmployee}`
         );
         setPayslips(data || []);
       }
@@ -203,7 +208,7 @@ export default function Payslip() {
     try {
       setLoading(true);
 
-      const res = await authFetch("/api/payslips/generate", {
+      const res = await authFetch(`${API_BASE_URL}/api/payslips/generate`, {
         method: "POST",
         body: JSON.stringify(payload),
       });
@@ -241,7 +246,7 @@ export default function Payslip() {
       }
 
       await authFetch(
-        `/api/payslips/${slip.employeeId}/${month}/${year}`,
+        `${API_BASE_URL}/api/payslips/${slip.employeeId}/${month}/${year}`,
         {
           method: "DELETE",
         }
@@ -268,7 +273,7 @@ export default function Payslip() {
   //     const monthYear = slip.monthYear || `${slip.month} ${slip.year}`;
   //     const { month, year } = parseMonthYear(monthYear);
 
-  //     await authFetch("/api/payslips/regenerate", {
+  //     await authFetch(`${API_BASE_URL}/api/payslips/regenerate`, {
   //       method: "POST",
   //       body: JSON.stringify({
   //         employeeId: slip.employeeId,

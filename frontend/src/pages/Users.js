@@ -2,6 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import api from "../api";
 import "./Users.css";
 
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
 export default function Users() {
   const role = localStorage.getItem("role");
   const myEmail = localStorage.getItem("email");
@@ -58,7 +62,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      const res = await api.get("/api/users");
+      const res = await api.get(`${API_BASE_URL}/api/users`);
       setUsers(res.data || []);
     } catch (e) {
       setError(e?.response?.data?.detail || "Failed to load users");
@@ -158,7 +162,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      await api.delete(`/api/users/${email}`);
+      await api.delete(`${API_BASE_URL}/api/users/${email}`);
       setMessage("User deleted successfully");
       fetchUsers();
     } catch (e) {
@@ -202,7 +206,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      const res = await api.put(`/api/users/reset-password/${selectedEmail}`, {
+      const res = await api.put(`${API_BASE_URL}/api/users/reset-password/${selectedEmail}`, {
         newPassword,
         confirmPassword,
       });
@@ -261,7 +265,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      const res = await api.put(`/api/users/${editOldEmail}`, {
+      const res = await api.put(`${API_BASE_URL}/api/users/${editOldEmail}`, {
         fullName: editFullName.trim(),
         email: editEmail.trim(),
         role: editRole,

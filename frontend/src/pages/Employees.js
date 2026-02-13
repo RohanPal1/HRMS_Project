@@ -2,6 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { authFetch } from "../api";
 import "./Employees.css";
 
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
+
+
 export default function Employees() {
   const role = localStorage.getItem("role");
 
@@ -58,7 +64,7 @@ export default function Employees() {
   const fetchEmployees = async () => {
     setLoading(true);
     try {
-      const data = await authFetch("/api/employees");
+      const data = await authFetch(`${API_BASE_URL}/api/employees`);
       setEmployees(data || []);
     } catch (err) {
       alert(err.message || "Error fetching employees");
@@ -167,7 +173,7 @@ export default function Employees() {
     // CREATE
     if (!editId) {
       try {
-        const res = await authFetch("/api/employees", {
+        const res = await authFetch(`${API_BASE_URL}/api/employees`, {
           method: "POST",
           body: JSON.stringify(form),
         });
@@ -192,7 +198,7 @@ export default function Employees() {
       };
 
       const res = await authFetch(
-        `/api/employees/${editId}`,
+        `${API_BASE_URL}/api/employees/${editId}`,
         {
           method: "PUT",
           body: JSON.stringify(payload),
@@ -230,7 +236,7 @@ export default function Employees() {
 
     try {
       const res = await authFetch(
-        `/api/employees/${employeeId}`,
+        `${API_BASE_URL}/api/employees/${employeeId}`,
         { method: "DELETE" }
       );
 
@@ -304,7 +310,7 @@ export default function Employees() {
       setResetLoading(true);
 
       const res = await authFetch(
-        `/api/users/reset-password/${resetUser.email}`,
+        `${API_BASE_URL}/api/users/reset-password/${resetUser.email}`,
         {
           method: "PUT",
           body: JSON.stringify({

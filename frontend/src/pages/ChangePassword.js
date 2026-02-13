@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import api from "../api";
 import "./ChangePassword.css";
 
+
+const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
 export default function ChangePassword() {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -24,7 +28,7 @@ export default function ChangePassword() {
         }
 
         try {
-            const res = await api.put("/api/users/change-password", {
+            const res = await api.put(`${API_BASE_URL}/api/users/change-password`, {
                 oldPassword,
                 newPassword,
             });

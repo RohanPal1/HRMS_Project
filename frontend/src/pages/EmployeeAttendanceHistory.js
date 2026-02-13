@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./EmployeeAttendanceHistory.css";
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export default function EmployeeAttendanceHistory() {
   const token = localStorage.getItem("token");
@@ -20,7 +21,7 @@ export default function EmployeeAttendanceHistory() {
     try {
       setLoading(true);
 
-      const res = await axios.get(`/api/attendance/me`, { headers });
+      const res = await axios.get(`${API_BASE_URL}/api/attendance/me`, { headers });
 
       const sorted = [...(res.data || [])].sort((a, b) =>
         b.date.localeCompare(a.date)

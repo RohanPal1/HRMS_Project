@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { authFetch } from "../api";
 import "./Profile.css";
 
+const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
 export default function Profile() {
     const [me, setMe] = useState(null);
     const [loadingMe, setLoadingMe] = useState(true);
@@ -40,7 +43,7 @@ export default function Profile() {
     const fetchMe = async () => {
         setLoadingMe(true);
         try {
-            const data = await authFetch("/api/profile/me");
+            const data = await authFetch(`${API_BASE_URL}/api/profile/me`);
             setMe(data);
 
             // Update localStorage so topbar name updates
@@ -101,7 +104,7 @@ export default function Profile() {
                 designation: designation?.trim() || "",
             };
 
-            const res = await authFetch("/api/profile/me", {
+            const res = await authFetch(`${API_BASE_URL}/api/profile/me`, {
                 method: "PUT",
                 body: JSON.stringify(payload),
             });
@@ -145,7 +148,7 @@ export default function Profile() {
             setSavingPassword(true);
 
             const res = await authFetch(
-                "/api/users/change-password",
+                `${API_BASE_URL}/users/change-password`,
                 {
                     method: "PUT",
                     body: JSON.stringify({

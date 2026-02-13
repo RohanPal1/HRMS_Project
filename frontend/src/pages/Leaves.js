@@ -3,7 +3,10 @@ import axios from "axios";
 
 import "./Leaves.css";
 
-const API = "http://localhost:8000";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
+
 
 export default function Leaves() {
   const token = localStorage.getItem("token");
@@ -56,22 +59,22 @@ export default function Leaves() {
   // API Calls
   // -----------------------------
   const fetchEmployees = async () => {
-    const res = await axios.get(`/api/employees`, { headers });
+    const res = await axios.get(`${API_BASE_URL}/api/employees`, { headers });
     setEmployees(res.data || []);
   };
 
   const fetchMyEmployee = async () => {
-    const res = await axios.get(`/api/employees/me`, { headers });
+    const res = await axios.get(`${API_BASE_URL}/api/employees/me`, { headers });
     setMyEmp(res.data);
   };
 
   const fetchMyLeaves = async (employeeId) => {
-    const res = await axios.get(`/api/leaves/${employeeId}`, { headers });
+    const res = await axios.get(`${API_BASE_URL}/api/leaves/${employeeId}`, { headers });
     setLeaves(res.data || []);
   };
 
   const fetchAllLeaves = async () => {
-    const res = await axios.get(`/api/leaves`, { headers });
+    const res = await axios.get(`${API_BASE_URL}/api/leaves`, { headers });
     setLeaves(res.data || []);
   };
 
@@ -118,7 +121,7 @@ export default function Leaves() {
 
     try {
       await axios.post(
-        `/api/leaves`,
+        `${API_BASE_URL}/api/leaves`,
         {
           employeeId: myEmp.employeeId,
           startDate: form.startDate,
@@ -144,7 +147,7 @@ export default function Leaves() {
       setActionLoadingId(leaveId);
 
       await axios.put(
-        `/api/leaves/action/${leaveId}`,
+        `${API_BASE_URL}/api/leaves/action/${leaveId}`,
         {
           status,
           remark: remarkDraft[leaveId] || "",

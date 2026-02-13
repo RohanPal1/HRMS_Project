@@ -19,7 +19,8 @@ import {
 
 import "./Dashboard.css";
 
-const API = "http://localhost:8000";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export default function Dashboard() {
   const token = localStorage.getItem("token");
@@ -41,16 +42,16 @@ export default function Dashboard() {
   const fetchAdminDashboard = async () => {
     try {
       const [t, a, p, m] = await Promise.all([
-        axios.get(`/api/dashboard/total-employees`, {
+        axios.get(`${API_BASE_URL}/api/dashboard/total-employees`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`/api/dashboard/today-attendance`, {
+        axios.get(`${API_BASE_URL}/api/dashboard/today-attendance`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`/api/dashboard/pending-leaves`, {
+        axios.get(`${API_BASE_URL}/api/dashboard/pending-leaves`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`/api/dashboard/monthly-attendance`, {
+        axios.get(`${API_BASE_URL}/api/dashboard/monthly-attendance`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -66,7 +67,7 @@ export default function Dashboard() {
 
   const fetchEmployeeDashboard = async () => {
     try {
-      const res = await axios.get(`/api/dashboard/employee-summary`, {
+      const res = await axios.get(`${API_BASE_URL}/api/dashboard/employee-summary`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEmployeeSummary(res.data);

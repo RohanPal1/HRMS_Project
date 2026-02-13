@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import "./OfficeBranches.css";
 
-const API = "http://localhost:8000";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export default function OfficeBranches() {
     const token = localStorage.getItem("token");
@@ -30,7 +31,7 @@ export default function OfficeBranches() {
     const fetchOffices = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(`/api/offices`, { headers });
+            const res = await axios.get(`${API_BASE_URL}/api/offices`, { headers });
             setOffices(res.data || []);
         } catch (err) {
             alert(err.response?.data?.detail || "Failed to load offices");
@@ -100,10 +101,10 @@ export default function OfficeBranches() {
 
         try {
             if (editMode) {
-                await axios.put(`/api/offices/${form.officeId}`, payload, { headers });
+                await axios.put(`${API_BASE_URL}/api/offices/${form.officeId}`, payload, { headers });
                 alert("Office updated");
             } else {
-                await axios.post(`/api/offices`, payload, { headers });
+                await axios.post(`${API_BASE_URL}/api/offices`, payload, { headers });
                 alert("Office created");
             }
 
@@ -130,7 +131,7 @@ export default function OfficeBranches() {
         if (!window.confirm(`Delete office "${officeId}"?`)) return;
 
         try {
-            await axios.delete(`/api/offices/${officeId}`, { headers });
+            await axios.delete(`${API_BASE_URL}/api/offices/${officeId}`, { headers });
             alert("Office deleted");
             fetchOffices();
         } catch (err) {

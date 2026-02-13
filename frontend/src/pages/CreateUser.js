@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import api from "../api";
 import "./CreateUser.css";
 
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
 export default function CreateUser() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +35,7 @@ export default function CreateUser() {
     try {
       setLoading(true);
 
-      const res = await api.post("/api/users", {
+      const res = await api.post(`${API_BASE_URL}/api/users`, {
         fullName,
         email,
         password,

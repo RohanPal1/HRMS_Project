@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import api from "./api";
 import { exportToCSV } from "./utils/exportCsv";
 
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
 export default function Reports() {
   const role = localStorage.getItem("hrms_role");
 
@@ -20,7 +24,7 @@ export default function Reports() {
 
   const loadEmployees = async () => {
     try {
-      const res = await api.get("/api/employees");
+      const res = await api.get(`${API_BASE_URL}/api/employees`);
       setEmployees(res.data);
     } catch {
       // ignore
@@ -38,8 +42,8 @@ export default function Reports() {
       if (filters.endDate) params.endDate = filters.endDate;
 
       const [attRes, leaveRes] = await Promise.all([
-        api.get("/api/reports/attendance", { params }),
-        api.get("/api/reports/leaves", { params }),
+        api.get(`${API_BASE_URL}/api/reports/attendance`, { params }),
+        api.get(`${API_BASE_URL}/api/reports/leaves`, { params }),
       ]);
 
       setAttendanceData(attRes.data);
