@@ -87,7 +87,7 @@ export default function Attendance() {
   // -------------------------
   const fetchOffices = async () => {
     try {
-      const res = await axios.get(`${API}/api/offices`, { headers });
+      const res = await axios.get(`/api/offices`, { headers });
       setOffices(res.data || []);
     } catch (err) {
       // Do not block attendance page if office API not available
@@ -99,12 +99,12 @@ export default function Attendance() {
   // FETCH EMPLOYEES / ME
   // -------------------------
   const fetchEmployees = async () => {
-    const res = await axios.get(`${API}/api/employees`, { headers });
+    const res = await axios.get(`/api/employees`, { headers });
     setEmployees(res.data || []);
   };
 
   const fetchMyEmployee = async () => {
-    const res = await axios.get(`${API}/api/employees/me`, { headers });
+    const res = await axios.get(`/api/employees/me`, { headers });
     setMyEmp(res.data);
     setExportFilters((p) => ({ ...p, employeeId: "" }));
   };
@@ -117,7 +117,7 @@ export default function Attendance() {
       setLoadingTable(true);
 
       if (role === "EMPLOYEE") {
-        const res = await axios.get(`${API}/api/attendance/me`, { headers });
+        const res = await axios.get(`/api/attendance/me`, { headers });
         setAttendanceRows(res.data || []);
       } else {
         const params = new URLSearchParams();
@@ -169,7 +169,7 @@ export default function Attendance() {
       if (!adminForm.employeeId) return alert("Select employee");
       if (!adminForm.date) return alert("Select date");
 
-      await axios.post(`${API}/api/attendance`, adminForm, { headers });
+      await axios.post(`/api/attendance`, adminForm, { headers });
 
       alert("Attendance saved");
       setAdminForm((p) => ({
@@ -234,7 +234,7 @@ export default function Attendance() {
         checkInLocation: loc,
       };
 
-      await axios.post(`${API}/api/attendance`, payload, { headers });
+      await axios.post(`/api/attendance`, payload, { headers });
       alert("Checked in!");
       fetchAttendanceTable();
     } catch (err) {
@@ -264,7 +264,7 @@ export default function Attendance() {
         checkOutLocation: loc,
       };
 
-      await axios.post(`${API}/api/attendance`, payload, { headers });
+      await axios.post(`/api/attendance`, payload, { headers });
       alert("Checked out!");
       fetchAttendanceTable();
     } catch (err) {
@@ -294,7 +294,7 @@ export default function Attendance() {
       }
 
       const res = await axios.get(
-        `${API}/api/attendance/export/csv?${params.toString()}`,
+        `/api/attendance/export/csv?${params.toString()}`,
         { headers, responseType: "blob" }
       );
 

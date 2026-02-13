@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const API_BASE = process.env.REACT_APP_API_BASE || "http://localhost:8000";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 // Axios instance
 const api = axios.create({
-  baseURL: API_BASE,
+  baseURL: API_BASE_URL,
 });
 
 // Automatically attach token to axios requests
@@ -15,22 +16,20 @@ api.interceptors.request.use((config) => {
 });
 
 // Fetch helper (returns JSON safely)
-export const authFetch = async (url, options = {}) => {
+export const authFetch = async (path, options = {}) => {
   const token = localStorage.getItem("token");
 
-  const res = await fetch(url, {
+  const res = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
     headers: {
       ...(options.headers || {}),
-      Authorization: `Bearer ${token}`,
+      Authorization: token ? `Bearer ${token}` : "",
       "Content-Type": "application/json",
     },
   });
 
-  // Read raw response safely
   const text = await res.text();
 
-  // If error
   if (!res.ok) {
     try {
       const errJson = JSON.parse(text);
@@ -40,10 +39,8 @@ export const authFetch = async (url, options = {}) => {
     }
   }
 
-  // If success but empty response
   if (!text) return null;
 
-  // Parse JSON safely
   try {
     return JSON.parse(text);
   } catch {

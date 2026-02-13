@@ -41,16 +41,16 @@ export default function Dashboard() {
   const fetchAdminDashboard = async () => {
     try {
       const [t, a, p, m] = await Promise.all([
-        axios.get(`${API}/api/dashboard/total-employees`, {
+        axios.get(`/api/dashboard/total-employees`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`${API}/api/dashboard/today-attendance`, {
+        axios.get(`/api/dashboard/today-attendance`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`${API}/api/dashboard/pending-leaves`, {
+        axios.get(`/api/dashboard/pending-leaves`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`${API}/api/dashboard/monthly-attendance`, {
+        axios.get(`/api/dashboard/monthly-attendance`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -66,7 +66,7 @@ export default function Dashboard() {
 
   const fetchEmployeeDashboard = async () => {
     try {
-      const res = await axios.get(`${API}/api/dashboard/employee-summary`, {
+      const res = await axios.get(`/api/dashboard/employee-summary`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEmployeeSummary(res.data);

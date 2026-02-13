@@ -20,7 +20,7 @@ export default function AdminSettings() {
     const fetchSettings = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(`${API}/api/settings/attendance-geo-fencing`, { headers });
+            const res = await axios.get(`/api/settings/attendance-geo-fencing`, { headers });
 
             setGeoFencingEnabled(Boolean(res.data?.geoFencingEnabled));
         } catch (err) {
@@ -50,7 +50,7 @@ export default function AdminSettings() {
             setLoading(true);
 
             await axios.patch(
-                `${API}/api/settings/attendance-geo-fencing`,
+                `/api/settings/attendance-geo-fencing`,
                 { enabled: geoFencingEnabled },
                 { headers }
             );

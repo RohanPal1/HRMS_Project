@@ -30,7 +30,7 @@ export default function OfficeBranches() {
     const fetchOffices = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(`${API}/api/offices`, { headers });
+            const res = await axios.get(`/api/offices`, { headers });
             setOffices(res.data || []);
         } catch (err) {
             alert(err.response?.data?.detail || "Failed to load offices");
@@ -100,10 +100,10 @@ export default function OfficeBranches() {
 
         try {
             if (editMode) {
-                await axios.put(`${API}/api/offices/${form.officeId}`, payload, { headers });
+                await axios.put(`/api/offices/${form.officeId}`, payload, { headers });
                 alert("Office updated");
             } else {
-                await axios.post(`${API}/api/offices`, payload, { headers });
+                await axios.post(`/api/offices`, payload, { headers });
                 alert("Office created");
             }
 
@@ -130,7 +130,7 @@ export default function OfficeBranches() {
         if (!window.confirm(`Delete office "${officeId}"?`)) return;
 
         try {
-            await axios.delete(`${API}/api/offices/${officeId}`, { headers });
+            await axios.delete(`/api/offices/${officeId}`, { headers });
             alert("Office deleted");
             fetchOffices();
         } catch (err) {

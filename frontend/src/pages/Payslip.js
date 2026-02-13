@@ -75,14 +75,14 @@ export default function Payslip() {
     try {
       // EMPLOYEE -> /me
       if (isEmployee) {
-        const data = await authFetch("http://localhost:8000/api/payslips/me");
+        const data = await authFetch("/api/payslips/me");
         setPayslips(data || []);
       }
 
       // ADMIN/HR -> if selected employee
       if (isAdminOrHr && selectedEmployee) {
         const data = await authFetch(
-          `http://localhost:8000/api/payslips/${selectedEmployee}`
+          `/api/payslips/${selectedEmployee}`
         );
         setPayslips(data || []);
       }
@@ -203,7 +203,7 @@ export default function Payslip() {
     try {
       setLoading(true);
 
-      const res = await authFetch("http://localhost:8000/api/payslips/generate", {
+      const res = await authFetch("/api/payslips/generate", {
         method: "POST",
         body: JSON.stringify(payload),
       });
@@ -241,7 +241,7 @@ export default function Payslip() {
       }
 
       await authFetch(
-        `http://localhost:8000/api/payslips/${slip.employeeId}/${month}/${year}`,
+        `/api/payslips/${slip.employeeId}/${month}/${year}`,
         {
           method: "DELETE",
         }
@@ -268,7 +268,7 @@ export default function Payslip() {
   //     const monthYear = slip.monthYear || `${slip.month} ${slip.year}`;
   //     const { month, year } = parseMonthYear(monthYear);
 
-  //     await authFetch("http://localhost:8000/api/payslips/regenerate", {
+  //     await authFetch("/api/payslips/regenerate", {
   //       method: "POST",
   //       body: JSON.stringify({
   //         employeeId: slip.employeeId,

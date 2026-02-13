@@ -58,7 +58,7 @@ export default function Employees() {
   const fetchEmployees = async () => {
     setLoading(true);
     try {
-      const data = await authFetch("http://localhost:8000/api/employees");
+      const data = await authFetch("/api/employees");
       setEmployees(data || []);
     } catch (err) {
       alert(err.message || "Error fetching employees");
@@ -167,7 +167,7 @@ export default function Employees() {
     // CREATE
     if (!editId) {
       try {
-        const res = await authFetch("http://localhost:8000/api/employees", {
+        const res = await authFetch("/api/employees", {
           method: "POST",
           body: JSON.stringify(form),
         });
@@ -192,7 +192,7 @@ export default function Employees() {
       };
 
       const res = await authFetch(
-        `http://localhost:8000/api/employees/${editId}`,
+        `/api/employees/${editId}`,
         {
           method: "PUT",
           body: JSON.stringify(payload),
@@ -230,7 +230,7 @@ export default function Employees() {
 
     try {
       const res = await authFetch(
-        `http://localhost:8000/api/employees/${employeeId}`,
+        `/api/employees/${employeeId}`,
         { method: "DELETE" }
       );
 
@@ -304,7 +304,7 @@ export default function Employees() {
       setResetLoading(true);
 
       const res = await authFetch(
-        `http://localhost:8000/api/users/reset-password/${resetUser.email}`,
+        `/api/users/reset-password/${resetUser.email}`,
         {
           method: "PUT",
           body: JSON.stringify({

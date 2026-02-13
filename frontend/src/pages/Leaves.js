@@ -56,22 +56,22 @@ export default function Leaves() {
   // API Calls
   // -----------------------------
   const fetchEmployees = async () => {
-    const res = await axios.get(`${API}/api/employees`, { headers });
+    const res = await axios.get(`/api/employees`, { headers });
     setEmployees(res.data || []);
   };
 
   const fetchMyEmployee = async () => {
-    const res = await axios.get(`${API}/api/employees/me`, { headers });
+    const res = await axios.get(`/api/employees/me`, { headers });
     setMyEmp(res.data);
   };
 
   const fetchMyLeaves = async (employeeId) => {
-    const res = await axios.get(`${API}/api/leaves/${employeeId}`, { headers });
+    const res = await axios.get(`/api/leaves/${employeeId}`, { headers });
     setLeaves(res.data || []);
   };
 
   const fetchAllLeaves = async () => {
-    const res = await axios.get(`${API}/api/leaves`, { headers });
+    const res = await axios.get(`/api/leaves`, { headers });
     setLeaves(res.data || []);
   };
 
@@ -118,7 +118,7 @@ export default function Leaves() {
 
     try {
       await axios.post(
-        `${API}/api/leaves`,
+        `/api/leaves`,
         {
           employeeId: myEmp.employeeId,
           startDate: form.startDate,
@@ -144,7 +144,7 @@ export default function Leaves() {
       setActionLoadingId(leaveId);
 
       await axios.put(
-        `${API}/api/leaves/action/${leaveId}`,
+        `/api/leaves/action/${leaveId}`,
         {
           status,
           remark: remarkDraft[leaveId] || "",

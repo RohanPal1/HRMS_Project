@@ -20,7 +20,7 @@ export default function EmployeeAttendanceHistory() {
     try {
       setLoading(true);
 
-      const res = await axios.get(`${API}/api/attendance/me`, { headers });
+      const res = await axios.get(`/api/attendance/me`, { headers });
 
       const sorted = [...(res.data || [])].sort((a, b) =>
         b.date.localeCompare(a.date)
