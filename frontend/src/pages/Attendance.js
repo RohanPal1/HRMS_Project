@@ -118,7 +118,7 @@ export default function Attendance() {
       setLoadingTable(true);
 
       if (role === "EMPLOYEE") {
-        const res = await axios.get(`${API_BASE_URL}/api/attendance/me`, { headers });
+        const res = await axios.get(`${API_BASE_URL_BASE_URL}/api/attendance/me`, { headers });
         setAttendanceRows(Array.isArray(res.data) ? res.data : []);
       } else {
         const params = new URLSearchParams();
@@ -126,7 +126,7 @@ export default function Attendance() {
           params.append("employeeId", exportFilters.employeeId);
 
         const res = await axios.get(
-          `${API}/api/attendance?${params.toString()}`,
+          `${API_BASE_URL}/api/attendance?${params.toString()}`,
           { headers }
         );
 
