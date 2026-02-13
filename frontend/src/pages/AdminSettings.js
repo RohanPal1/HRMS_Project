@@ -3,7 +3,8 @@ import axios from "axios";
 import "./AdminSettings.css";
 
 
-const API = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export default function AdminSettings() {
     const token = localStorage.getItem("token");
@@ -20,7 +21,7 @@ export default function AdminSettings() {
     const fetchSettings = async () => {
         try {
             setLoading(true);
-            const res = await axios.get(`/api/settings/attendance-geo-fencing`, { headers });
+            const res = await axios.get(`${API_BASE_URL}/api/settings/attendance-geo-fencing`, { headers });
 
             setGeoFencingEnabled(Boolean(res.data?.geoFencingEnabled));
         } catch (err) {
@@ -50,7 +51,7 @@ export default function AdminSettings() {
             setLoading(true);
 
             await axios.patch(
-                `/api/settings/attendance-geo-fencing`,
+                `${API_BASE_URL}/api/settings/attendance-geo-fencing`,
                 { enabled: geoFencingEnabled },
                 { headers }
             );

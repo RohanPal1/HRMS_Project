@@ -6,7 +6,8 @@ import autoTable from "jspdf-autotable";
 
 import "./Attendance.css";
 
-const API = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 export default function Attendance() {
   const token = localStorage.getItem("token");
@@ -87,7 +88,7 @@ export default function Attendance() {
   // -------------------------
   const fetchOffices = async () => {
     try {
-      const res = await axios.get(`/api/offices`, { headers });
+      const res = await axios.get(`${API_BASE_URL}/api/offices`, { headers });
       setOffices(res.data || []);
     } catch (err) {
       // Do not block attendance page if office API not available
@@ -99,12 +100,12 @@ export default function Attendance() {
   // FETCH EMPLOYEES / ME
   // -------------------------
   const fetchEmployees = async () => {
-    const res = await axios.get(`/api/employees`, { headers });
+    const res = await axios.get(`${API_BASE_URL}/api/employees`, { headers });
     setEmployees(res.data || []);
   };
 
   const fetchMyEmployee = async () => {
-    const res = await axios.get(`/api/employees/me`, { headers });
+    const res = await axios.get(`${API_BASE_URL}/api/employees/me`, { headers });
     setMyEmp(res.data);
     setExportFilters((p) => ({ ...p, employeeId: "" }));
   };
@@ -117,8 +118,8 @@ export default function Attendance() {
       setLoadingTable(true);
 
       if (role === "EMPLOYEE") {
-        const res = await axios.get(`/api/attendance/me`, { headers });
-        setAttendanceRows(res.data || []);
+        const res = await axios.get(`${API_BASE_URL}/api/attendance/me`, { headers });
+        setAttendanceRows(Array.isArray(res.data) ? res.data : []);
       } else {
         const params = new URLSearchParams();
         if (exportFilters.employeeId)
@@ -129,7 +130,7 @@ export default function Attendance() {
           { headers }
         );
 
-        setAttendanceRows(res.data || []);
+        setAttendanceRows(Array.isArray(res.data) ? res.data : []);
       }
     } catch (err) {
       alert(err.response?.data?.detail || "Error loading attendance table");
@@ -169,7 +170,7 @@ export default function Attendance() {
       if (!adminForm.employeeId) return alert("Select employee");
       if (!adminForm.date) return alert("Select date");
 
-      await axios.post(`/api/attendance`, adminForm, { headers });
+      await axios.post(`${API_BASE_URL}/api/attendance`, adminForm, { headers });
 
       alert("Attendance saved");
       setAdminForm((p) => ({
@@ -234,7 +235,7 @@ export default function Attendance() {
         checkInLocation: loc,
       };
 
-      await axios.post(`/api/attendance`, payload, { headers });
+      await axios.post(`${API_BASE_URL}/api/attendance`, payload, { headers });
       alert("Checked in!");
       fetchAttendanceTable();
     } catch (err) {
@@ -264,7 +265,7 @@ export default function Attendance() {
         checkOutLocation: loc,
       };
 
-      await axios.post(`/api/attendance`, payload, { headers });
+      await axios.post(`${API_BASE_URL}/api/attendance`, payload, { headers });
       alert("Checked out!");
       fetchAttendanceTable();
     } catch (err) {
@@ -294,7 +295,7 @@ export default function Attendance() {
       }
 
       const res = await axios.get(
-        `/api/attendance/export/csv?${params.toString()}`,
+        `${API_BASE_URL}/api/attendance/export/csv?${params.toString()}`,
         { headers, responseType: "blob" }
       );
 
