@@ -2,6 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
+
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
+
+
 export default function Login() {
   const [email, setEmail] = useState("admin@hrms.com");
   const [password, setPassword] = useState("");
@@ -10,7 +15,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -73,9 +78,9 @@ export default function Login() {
         {message && (
           <div
             className={`login-message ${message.toLowerCase().includes("error") ||
-                message.toLowerCase().includes("failed")
-                ? "login-error"
-                : "login-success"
+              message.toLowerCase().includes("failed")
+              ? "login-error"
+              : "login-success"
               }`}
           >
             {message}
