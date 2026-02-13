@@ -43,7 +43,7 @@ export default function Profile() {
     const fetchMe = async () => {
         setLoadingMe(true);
         try {
-            const data = await authFetch(`${API_BASE_URL}/api/profile/me`);
+            const data = await authFetch(`/api/profile/me`);
             setMe(data);
 
             // Update localStorage so topbar name updates
@@ -104,7 +104,7 @@ export default function Profile() {
                 designation: designation?.trim() || "",
             };
 
-            const res = await authFetch(`${API_BASE_URL}/api/profile/me`, {
+            const res = await authFetch(`/api/profile/me`, {
                 method: "PUT",
                 body: JSON.stringify(payload),
             });

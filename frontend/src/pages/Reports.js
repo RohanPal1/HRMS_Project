@@ -24,7 +24,7 @@ export default function Reports() {
 
   const loadEmployees = async () => {
     try {
-      const res = await api.get(`${API_BASE_URL}/api/employees`);
+      const res = await api.get(`/api/employees`);
       setEmployees(res.data);
     } catch {
       // ignore
@@ -42,8 +42,8 @@ export default function Reports() {
       if (filters.endDate) params.endDate = filters.endDate;
 
       const [attRes, leaveRes] = await Promise.all([
-        api.get(`${API_BASE_URL}/api/reports/attendance`, { params }),
-        api.get(`${API_BASE_URL}/api/reports/leaves`, { params }),
+        api.get(`/api/reports/attendance`, { params }),
+        api.get(`/api/reports/leaves`, { params }),
       ]);
 
       setAttendanceData(attRes.data);

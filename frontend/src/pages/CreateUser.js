@@ -35,7 +35,7 @@ export default function CreateUser() {
     try {
       setLoading(true);
 
-      const res = await api.post(`${API_BASE_URL}/api/users`, {
+      const res = await api.post(`/api/users`, {
         fullName,
         email,
         password,

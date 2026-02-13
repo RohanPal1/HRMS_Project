@@ -28,7 +28,7 @@ export default function ChangePassword() {
         }
 
         try {
-            const res = await api.put(`${API_BASE_URL}/api/users/change-password`, {
+            const res = await api.put(`/api/users/change-password`, {
                 oldPassword,
                 newPassword,
             });

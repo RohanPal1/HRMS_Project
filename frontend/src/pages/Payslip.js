@@ -3,6 +3,7 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import api, { authFetch } from "../api";
 import "./Payslip.css";
+import axios from "axios";
 
 
 const API_BASE_URL =
@@ -44,7 +45,7 @@ export default function Payslip() {
   useEffect(() => {
     const loadEmployees = async () => {
       try {
-        const res = await api.get(`${API_BASE_URL}/api/employees`);
+        const res = await api.get(`/api/employees`);
         setEmployees(res.data || []);
       } catch (e) {
         console.log(e);
@@ -80,14 +81,14 @@ export default function Payslip() {
     try {
       // EMPLOYEE -> /me
       if (isEmployee) {
-        const data = await authFetch(`${API_BASE_URL}/api/payslips/me`);
+        const data = await authFetch(`/api/payslips/me`);
         setPayslips(data || []);
       }
 
       // ADMIN/HR -> if selected employee
       if (isAdminOrHr && selectedEmployee) {
         const data = await authFetch(
-          `${API_BASE_URL}/api/payslips/${selectedEmployee}`
+          `/api/payslips/${selectedEmployee}`
         );
         setPayslips(data || []);
       }
@@ -208,7 +209,7 @@ export default function Payslip() {
     try {
       setLoading(true);
 
-      const res = await authFetch(`${API_BASE_URL}/api/payslips/generate`, {
+      const res = await authFetch(`/api/payslips/generate`, {
         method: "POST",
         body: JSON.stringify(payload),
       });
@@ -246,7 +247,7 @@ export default function Payslip() {
       }
 
       await authFetch(
-        `${API_BASE_URL}/api/payslips/${slip.employeeId}/${month}/${year}`,
+        `/api/payslips/${slip.employeeId}/${month}/${year}`,
         {
           method: "DELETE",
         }

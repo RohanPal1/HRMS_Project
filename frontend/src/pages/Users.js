@@ -62,7 +62,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      const res = await api.get(`${API_BASE_URL}/api/users`);
+      const res = await api.get(`/api/users`);
       setUsers(res.data || []);
     } catch (e) {
       setError(e?.response?.data?.detail || "Failed to load users");
@@ -162,7 +162,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      await api.delete(`${API_BASE_URL}/api/users/${email}`);
+      await api.delete(`/api/users/${email}`);
       setMessage("User deleted successfully");
       fetchUsers();
     } catch (e) {
@@ -206,7 +206,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      const res = await api.put(`${API_BASE_URL}/api/users/reset-password/${selectedEmail}`, {
+      const res = await api.put(`/api/users/reset-password/${selectedEmail}`, {
         newPassword,
         confirmPassword,
       });
@@ -265,7 +265,7 @@ export default function Users() {
     setMessage("");
 
     try {
-      const res = await api.put(`${API_BASE_URL}/api/users/${editOldEmail}`, {
+      const res = await api.put(`/api/users/${editOldEmail}`, {
         fullName: editFullName.trim(),
         email: editEmail.trim(),
         role: editRole,
