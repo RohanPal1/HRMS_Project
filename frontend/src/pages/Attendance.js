@@ -89,7 +89,7 @@ export default function Attendance() {
   const fetchOffices = async () => {
     try {
       const res = await axios.get(`${API_BASE_URL}/api/offices`, { headers });
-      setOffices(res.data || []);
+      setOffices(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       // Do not block attendance page if office API not available
       console.log("Offices not loaded:", err?.response?.data || err.message);
@@ -101,7 +101,7 @@ export default function Attendance() {
   // -------------------------
   const fetchEmployees = async () => {
     const res = await axios.get(`${API_BASE_URL}/api/employees`, { headers });
-    setEmployees(res.data || []);
+    setEmployees(Array.isArray(res.data) ? res.data : []);
   };
 
   const fetchMyEmployee = async () => {
