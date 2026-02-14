@@ -2,15 +2,21 @@
     width: 100%;
     max-width: 520px;
     background: #ffffff;
+    /* clean white card */
     border-radius: 16px;
     padding: 18px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    /* subtle shadow for depth */
+    border: 1px solid #e5e7eb;
+    /* soft gray border */
 }
 
 .cu-title {
     margin: 0 0 14px 0;
     font-size: 20px;
     font-weight: 800;
+    color: #111827;
+    /* rich dark text for readability */
 }
 
 .cu-form {
@@ -23,41 +29,55 @@
     width: 100%;
     padding: 12px 12px;
     border-radius: 12px;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #d1d5db;
+    /* light gray border */
     outline: none;
     font-size: 14px;
-    background: white;
+    background: #f9fafb;
+    /* soft light gray for subtle contrast */
+    color: #111827;
+    /* dark text */
+    transition: border-color 0.2s, background 0.2s;
 }
 
 .cu-input:focus,
 .cu-select:focus {
-    border-color: #2563eb;
+    border-color: #3b82f6;
+    /* modern blue accent */
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(59, 130, 246, 0.25);
 }
 
 .cu-btn {
     padding: 12px 14px;
     border-radius: 12px;
     border: none;
-    background: #111827;
-    color: white;
-    font-weight: 800;
+    background: #3b82f6;
+    /* vibrant blue button */
+    color: #ffffff;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
 
 .cu-btn:hover {
-    opacity: 0.92;
+    background: #2563eb;
+    /* darker blue hover */
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
 }
 
 .cu-msg {
     color: #16a34a;
-    font-weight: 700;
+    /* bright green success */
+    font-weight: 600;
     margin: 0;
 }
 
 .cu-err {
     color: #dc2626;
-    font-weight: 700;
+    /* strong red error */
+    font-weight: 600;
     margin: 0;
 }
 
@@ -73,7 +93,6 @@
     }
 }
 
-
 .cu-pass-wrap {
     display: flex;
     gap: 10px;
@@ -85,12 +104,21 @@
 }
 
 .cu-pass-toggle {
-    border: 1px solid #ccc;
-    background: #f5f5f5;
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    /* subtle gray button */
     padding: 10px 14px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
+    color: #111827;
+    transition: all 0.2s;
+}
+
+.cu-pass-toggle:hover:not(:disabled) {
+    background: #e0e7ff;
+    /* soft blue hover */
+    color: #2563eb;
 }
 
 .cu-pass-toggle:disabled {

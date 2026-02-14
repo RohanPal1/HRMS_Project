@@ -39,7 +39,6 @@
   color: #3B82F6;
 }
 
-/* Right section */
 .layout__right {
   display: flex;
   gap: 12px;
@@ -47,23 +46,21 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   position: relative;
-  /* for dropdown positioning */
+
 }
 
 /* Role Badge */
 .layout__role {
   font-weight: 700;
   color: #1F2937;
-  /* dark text for icon visibility */
   background: #D1D5DB;
-  /* light gray background for contrast */
+
   padding: 6px 10px;
   border-radius: 8px;
   font-size: 14px;
   display: flex;
   align-items: center;
   gap: 4px;
-  /* small space between icon and text */
 }
 
 /* User button */
@@ -82,7 +79,7 @@
 
 .layout__userBtn:hover {
   background: #E5B5F2;
-  /* darker blue on hover */
+
 }
 
 /* Dropdown */
@@ -97,6 +94,7 @@
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
   padding: 10px;
   z-index: 9999;
+  transition: all 0.2s ease-in-out;
 }
 
 .layout__dropItem {
@@ -170,5 +168,22 @@
   .layout__role,
   .layout__userBtn {
     width: fit-content;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout__dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .layout__dropdown {
+    position: static;
+    width: 100%;
+    margin-top: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 }
