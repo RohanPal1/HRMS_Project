@@ -34,7 +34,7 @@ export default function AdminSettings() {
     useEffect(() => {
         if (role !== "ADMIN") return;
         fetchSettings();
-        // eslint-disable-next-line
+        
     }, []);
 
     if (role !== "ADMIN") {

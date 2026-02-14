@@ -1,26 +1,42 @@
-/* Main layout */
+/* ---------------------------------- */
+/* MAIN LAYOUT */
+/* ---------------------------------- */
 .layout {
   min-height: 100vh;
-  background: #f3f4f6;
-  font-family: Arial, sans-serif;
+  background: #F9FAFB;
+  /* soft light gray */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* modern font */
 }
 
 /* Topbar */
 .layout__topbar {
-  background: #ffffff;
+  background: #FFFFFF;
   padding: 14px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #E5E7EB;
   gap: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .layout__title {
   margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: #111827;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1F2937;
+  /* darker gray-blue for readability */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-logo {
+  color: #1F2937;
+  text-decoration: none;
+}
+
+.nav-logo:hover {
+  color: #3B82F6;
 }
 
 /* Right section */
@@ -30,29 +46,85 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
+  position: relative;
+  /* for dropdown positioning */
 }
 
-.layout__user {
-  font-weight: 800;
-  color: #111827;
-  background: #f3f4f6;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.layout__user:hover {
-  opacity: 0.85;
-}
-
+/* Role Badge */
 .layout__role {
   font-weight: 700;
-  color: #374151;
-  background: #f3f4f6;
+  color: #1F2937;
+  /* dark text for icon visibility */
+  background: #D1D5DB;
+  /* light gray background for contrast */
   padding: 6px 10px;
   border-radius: 8px;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* small space between icon and text */
+}
+
+/* User button */
+.layout__userBtn {
+  border: none;
+  background: #3B82F6A6;
+  /* primary blue */
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.layout__userBtn:hover {
+  background: #E5B5F2;
+  /* darker blue on hover */
+}
+
+/* Dropdown */
+.layout__dropdown {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  width: 220px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  z-index: 9999;
+}
+
+.layout__dropItem {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.layout__dropItem:hover {
+  background: #2563EB;
+  color: #FFFFFF;
+}
+
+.layout__dropDivider {
+  height: 1px;
+  background: #E5E7EB;
+  margin: 6px 0;
+}
+
+.layout__dropLogout {
+  padding: 6px 10px;
 }
 
 /* Container */
@@ -67,9 +139,7 @@
   margin-top: 14px;
 }
 
-/* --------------------- */
 /* Mobile Responsive */
-/* --------------------- */
 @media (max-width: 768px) {
   .layout__topbar {
     flex-direction: column;
@@ -86,7 +156,7 @@
   }
 
   .layout__title {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
@@ -98,85 +168,7 @@
   }
 
   .layout__role,
-  .layout__user {
+  .layout__userBtn {
     width: fit-content;
   }
-}
-
-
-
-/* New Add on CSS */
-
-.layout__userBtn {
-  border: none;
-  background: #e5e7eb;
-  padding: 6px 10px;
-  border-radius: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.layout__userBtn:hover {
-  opacity: 0.9;
-}
-
-.layout__dropdown {
-  position: absolute;
-  top: 52px;
-  right: 0;
-  width: 220px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-  padding: 10px;
-  z-index: 9999;
-}
-
-.layout__right {
-  position: relative;
-}
-
-.layout__dropdownHeader {
-  padding: 8px 10px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 6px;
-}
-
-.layout__dropdownName {
-  font-weight: 800;
-  font-size: 14px;
-}
-
-.layout__dropdownRole {
-  font-size: 12px;
-  opacity: 0.7;
-  margin-top: 2px;
-}
-
-.layout__dropItem {
-  width: 100%;
-  text-align: left;
-  border: none;
-  background: transparent;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.layout__dropItem:hover {
-  background: #5c92ff;
-}
-
-.layout__dropDivider {
-  height: 1px;
-  background: #eee;
-  margin: 6px 0;
-}
-
-.layout__dropLogout {
-  padding: 6px 10px;
 }

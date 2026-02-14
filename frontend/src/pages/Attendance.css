@@ -8,12 +8,20 @@
   margin: 0 auto;
   padding: 14px;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* nicer font */
+  background: #f9fafb;
+  /* subtle page background */
 }
 
 .att-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
+  color: #111827;
+  /* darker, readable title */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* =========================
@@ -21,19 +29,28 @@
    ========================= */
 
 .att-card {
-  background: #ffffff;
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);
+  /* subtle gradient */
   border: 1px solid #e5e7eb;
   border-radius: 18px;
-  padding: 14px;
-  margin-bottom: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+  /* slightly stronger shadow */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.att-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.1);
 }
 
 .att-card-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
   margin: 0 0 12px;
+  color: #1e3a8a;
+  /* richer color for card title */
 }
 
 /* =========================
@@ -44,6 +61,8 @@
   font-size: 14px;
   margin-bottom: 12px;
   opacity: 0.85;
+  color: #374151;
+  /* better readability */
 }
 
 /* =========================
@@ -52,8 +71,12 @@
 
 .att-grid {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
+}
+
+.att-grid-1 {
+  margin-bottom: 16px;
 }
 
 .att-grid-2 {
@@ -69,7 +92,7 @@
 }
 
 .att-spacer {
-  height: 12px;
+  height: 14px;
 }
 
 /* =========================
@@ -85,10 +108,12 @@
   font-size: 14px;
   box-sizing: border-box;
   background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .att-input:focus {
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* =========================
@@ -103,11 +128,12 @@
   cursor: pointer;
   font-weight: 800;
   font-size: 14px;
-  transition: 0.15s ease;
+  transition: 0.2s ease, transform 0.1s;
 }
 
 .att-btn:hover {
-  opacity: 0.92;
+  transform: translateY(-1px);
+  opacity: 0.95;
 }
 
 .att-btn-dark {
@@ -143,23 +169,24 @@
   background: #fff;
   cursor: pointer;
   font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.att-btn-mini:hover {
+  background: #f3f4f6;
 }
 
 /* =========================
    Notes + Help
    ========================= */
 
-.att-note {
+.att-note,
+.att-help {
   margin-top: 10px;
   font-size: 13px;
   opacity: 0.75;
-  line-height: 1.4;
-}
-
-.att-help {
-  margin: 10px 0 0;
-  font-size: 13px;
-  opacity: 0.75;
+  line-height: 1.5;
+  color: #4b5563;
 }
 
 /* =========================
@@ -170,8 +197,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .att-table-wrap {
@@ -184,21 +211,23 @@
 .att-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 900px; /* important */
+  min-width: 900px;
 }
 
 .att-table th,
 .att-table td {
-  padding: 12px;
+  padding: 14px;
   font-size: 14px;
   text-align: left;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e5e7eb;
   white-space: nowrap;
 }
 
 .att-table th {
-  background: #f9fafb;
+  background: #eef2ff;
+  /* lighter header */
   font-weight: 900;
+  color: #1e3a8a;
 }
 
 .att-table-empty {
@@ -208,7 +237,7 @@
 }
 
 .att-footer {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 13px;
   opacity: 0.75;
 }
@@ -218,11 +247,12 @@
    ========================= */
 
 .att-badge {
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 900;
   display: inline-block;
+  text-transform: uppercase;
 }
 
 .att-present {

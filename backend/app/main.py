@@ -1089,6 +1089,12 @@ def validate_office_location(location: dict | None, action="Check-in"):
 
         dist = haversine_distance_m(lat, lng, office["lat"], office["lng"])
 
+        # Printing Longitude and Latitude for debugging 
+        print("EMPLOYEE LAT LNG:", lat, lng)
+        print("OFFICE LAT LNG:", office["lat"], office["lng"])
+        print("DISTANCE:", dist)
+        print("ALLOWED RADIUS:", office.get("radiusMeters", 300))
+
         if dist > office.get("radiusMeters", 300):
             raise HTTPException(
                 status_code=403,
@@ -1125,6 +1131,7 @@ def validate_office_location(location: dict | None, action="Check-in"):
         "officeName": nearest["officeName"],
         "distanceMeters": round(nearest_dist, 2),
     }
+
 
 
 @app.post("/api/attendance/preview-location")

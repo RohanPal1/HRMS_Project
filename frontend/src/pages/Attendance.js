@@ -224,16 +224,24 @@ export default function Attendance() {
       // ✅ Get location first
       const loc = await getCurrentLocation();
 
+      //  attaching officeId here
+      const checkInLocation = {
+        ...loc,
+        officeId: selectedOfficeId || null,
+      };
+
       const payload = {
         employeeId: myEmp.employeeId,
         date: getTodayISO(),
         status: "Present",
         checkInTime: getNowHHMM(),
-
-        // ✅ NEW
         selectedOfficeId: selectedOfficeId || null,
-        checkInLocation: loc,
+        checkInLocation: checkInLocation,
       };
+
+      // Checking the coordinates in ayload
+
+      console.log("ATTENDANCE PAYLOAD:", payload);
 
       await axios.post(`${API_BASE_URL}/api/attendance`, payload, { headers });
       alert("Checked in!");
@@ -254,15 +262,18 @@ export default function Attendance() {
       // ✅ Get location first
       const loc = await getCurrentLocation();
 
+      const checkOutLocation = {
+        ...loc,
+        officeId: selectedOfficeId || null,
+      };
+
       const payload = {
         employeeId: myEmp.employeeId,
         date: getTodayISO(),
         status: "Present",
         checkOutTime: getNowHHMM(),
-
-        // ✅ NEW
         selectedOfficeId: selectedOfficeId || null,
-        checkOutLocation: loc,
+        checkOutLocation: checkOutLocation,
       };
 
       await axios.post(`${API_BASE_URL}/api/attendance`, payload, { headers });
