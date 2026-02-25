@@ -70,10 +70,28 @@ app.add_middleware(
 # -----------------------
 # Auth dependency
 # -----------------------
+
+# For Demo only, will remove later 
+
+DEV_MODE = True 
+
+# For Demo only, will remove later 
+
+
 security = HTTPBearer()
 
 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
+
+    # ✅ If Dev Mode → auto login as Admin
+    if DEV_MODE:
+        return {
+            "email": "admin@hrms.com",
+            "role": "ADMIN",
+            "fullName": "Super Admin (Dev Mode)"
+        }
+
+        
     token = credentials.credentials
     payload = decode_token(token)
     return payload
