@@ -43,6 +43,7 @@ export default function Login() {
       setMessage(`Logged in as ${data.fullName}`);
 
       // ✅ GO TO DASHBOARD (like earlier)
+      // We can make Changes to the code also later 
       navigate("/dashboard");
     } catch (err) {
       console.error(err);
