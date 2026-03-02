@@ -167,5 +167,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
+
+    // We Can add as many as features as we want in our app
   );
 }

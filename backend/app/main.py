@@ -76,6 +76,7 @@ app.add_middleware(
 DEV_MODE = False
 
 # For Demo only, will remove later 
+# We can add more features as we want
 
 
 security = HTTPBearer()
