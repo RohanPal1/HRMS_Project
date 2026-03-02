@@ -1,0 +1,430 @@
+.employeesPage {
+  width: 100%;
+  padding: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.employeesTitle {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+/* Form Card */
+.employeeForm {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+
+/* Grid Inputs */
+.employeeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Inputs */
+.employeeInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.employeeInput:focus {
+  border-color: #2563eb;
+}
+
+/* Buttons Row */
+.employeeActionsRow {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  padding: 11px 14px;
+  border: none;
+  border-radius: 12px;
+  background: #111827;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondaryBtn {
+  padding: 11px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  background: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  min-width: 150px;
+}
+
+.primaryBtn:hover,
+.secondaryBtn:hover {
+  opacity: 0.9;
+}
+
+.employeeListTitle {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 10px 0 12px;
+}
+
+/* ==========================
+   ✅ Search + Pagination UI
+========================== */
+
+.listTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 12px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  flex: 1;
+  min-width: 240px;
+  max-width: 420px;
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  border-color: #2563eb;
+}
+
+.resultCount {
+  font-size: 14px;
+  color: #444;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Pagination */
+.paginationWrap {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pageBtn {
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 1px solid #d0d7de;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 42px;
+}
+
+.pageBtn:hover {
+  opacity: 0.9;
+}
+
+.pageBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pageBtnActive {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+/* Table wrapper (mobile scroll fix) */
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: white;
+}
+
+/* Table */
+.employeeTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.employeeTable th,
+.employeeTable td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.employeeTable th {
+  background: #f9fafb;
+  font-weight: 800;
+}
+
+.rowBtns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===========================
+   ✅ Responsive Fixes
+========================== */
+
+@media (max-width: 900px) {
+  .employeeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listTopBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchBox {
+    max-width: 100%;
+  }
+
+  .resultCount {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .employeesPage {
+    padding: 12px;
+  }
+
+  .employeesTitle {
+    font-size: 20px;
+  }
+
+  .employeeForm {
+    padding: 12px;
+  }
+
+  /* ✅ This is the main fix for mobile */
+  .employeeGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .employeeActionsRow {
+    flex-direction: column;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* Table stays scrollable, no breaking */
+  .employeeTable {
+    min-width: 650px;
+  }
+}
+
+/* ==========================
+   RESET PASSWORD MODAL
+========================== */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.modalSub {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.passRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.tinyBtn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.modalErr {
+  color: #c62828;
+  font-size: 14px;
+  margin: 0;
+}
+
+.modalMsg {
+  color: #2e7d32;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ==========================
+   SEARCH + COUNT BAR
+========================== */
+.listTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 14px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  flex: 1;
+  min-width: 260px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  border-color: #2563eb;
+}
+
+.resultCount {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+/* ==========================
+   PAGINATION
+========================== */
+.paginationWrap {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.pageBtn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #d0d7de;
+  background: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.pageBtn:hover {
+  opacity: 0.9;
+}
+
+.pageBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pageBtnActive {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+/* Danger button */
+.danger {
+  padding: 11px 14px;
+  border: none;
+  border-radius: 12px;
+  background: #ffdddd;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+
+/* Role badge */
+
+.roleBadge {
+  padding: 10px 10px;
+  background: #cae9cb;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-block;
+}

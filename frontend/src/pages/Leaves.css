@@ -1,0 +1,286 @@
+/* ================================
+   LEAVES PAGE (Responsive)
+================================ */
+
+.leave-page {
+  padding: 20px;
+}
+
+.leave-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+/* Card */
+.leave-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.leave-card-space {
+  margin-bottom: 18px;
+}
+
+.leave-card-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Employee info */
+.leave-emp-info {
+  margin: 0 0 12px 0;
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+/* Form */
+.leave-form {
+  max-width: 560px;
+}
+
+.leave-grid {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+
+.leave-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.leave-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.leave-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.leave-field-top {
+  margin-top: 12px;
+}
+
+.leave-label {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* Inputs */
+.leave-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  background: white;
+}
+
+.leave-input:focus {
+  border-color: #2563eb;
+}
+
+.leave-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  resize: vertical;
+  background: white;
+}
+
+.leave-textarea:focus {
+  border-color: #2563eb;
+}
+
+/* Buttons */
+.leave-btn {
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.leave-btn:hover {
+  transform: translateY(-1px);
+}
+
+.leave-btn-dark {
+  background: black;
+  color: white;
+  margin-top: 12px;
+}
+
+.leave-btn-green {
+  background: #16a34a;
+  color: white;
+}
+
+.leave-btn-red {
+  background: #dc2626;
+  color: white;
+}
+
+/* Helper text */
+.leave-help {
+  margin-top: 12px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+/* Table */
+.leave-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.leave-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+.leave-table-admin {
+  min-width: 1150px;
+}
+
+.leave-table th,
+.leave-table td {
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.leave-table th {
+  background: #f9fafb;
+  font-weight: 800;
+}
+
+.leave-table-empty {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+}
+
+/* Reason cell */
+.leave-reason {
+  max-width: 320px;
+  word-break: break-word;
+}
+
+/* Subtext */
+.leave-subtext {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* Remark cell */
+.leave-remark-cell {
+  min-width: 240px;
+}
+
+/* Action */
+.leave-action-cell {
+  min-width: 220px;
+}
+
+.leave-action-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.leave-updating {
+  font-size: 12px;
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+/* Badges */
+.leave-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-block;
+  letter-spacing: 0.3px;
+}
+
+.leave-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.leave-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.leave-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.leave-default {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .leave-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .leave-page {
+    padding: 12px;
+  }
+
+  .leave-title {
+    font-size: 20px;
+  }
+
+  .leave-card {
+    padding: 14px;
+  }
+
+  .leave-grid-2,
+  .leave-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .leave-form {
+    max-width: 100%;
+  }
+
+  .leave-action-row {
+    flex-direction: column;
+  }
+
+  .leave-btn {
+    width: 100%;
+  }
+}
